@@ -1,12 +1,12 @@
 pkgname=luit
 pkgver=20190106
-pkgrel=2
+pkgrel=3
 pkgdesc="Luit is a filter that can be run between an arbitrary application and a UTF-8 terminal emulator."
 arch=('i686' 'x86_64')
 url='https://invisible-island.net/luit/luit.html'
-license=('BSD')
-source=("ftp://ftp.invisible-island.net/luit/luit-${pkgver}.tgz"
-        "fix-ldflags.patch")
+license=('MIT')
+source=(ftp://ftp.invisible-island.net/luit/luit-${pkgver}.tgz
+        luit-20190106-fix-ldflags.patch)
 depends=('gcc-libs' 'libiconv' 'zlib')
 makedepends=('diffutils' 'gcc' 'libiconv-devel' 'make' 'patch' 'zlib-devel')
 sha256sums=('2b900f65ccdc38f8bfc11c6020069d055ba63fce6f90baefe8efc222a5ca3920'
@@ -14,7 +14,7 @@ sha256sums=('2b900f65ccdc38f8bfc11c6020069d055ba63fce6f90baefe8efc222a5ca3920'
 
 prepare() {
     cd "${srcdir}/luit-${pkgver}"
-    patch -p0 -i "${srcdir}/fix-ldflags.patch"
+    patch -p0 -i "${srcdir}/luit-20190106-fix-ldflags.patch"
 }
 
 build() {
